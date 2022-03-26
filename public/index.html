@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>CONFIDENTIAL</title>
+    </head>
+    <body>
+        <script>
+            async function submit() {
+                const query = document.getElementById("query");
+                try {
+                    const response = await fetch("/query?q="+query.value);
+                    console.log(response)
+                    const data = await response.json();
+                    const respElem = document.getElementById("response");
+                    respElem.textContent = data;
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        </script>
+        <h1>Pentesting is awesome!</h1>
+        <h2>Work in Progress</h2>
+        <input id="query" type="text" placeholder="What do you want to evaluate?" />
+        <button onClick="submit()">Evaluate</button>
+        <div id="response"></div>
+    </body>
+</html>
